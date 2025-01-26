@@ -35,10 +35,26 @@ const addNewGoal = () => {
     // ⚠️ Hint 4: Event listener
     // The event listener that removes goals when clicked is not related to this issue.
     // Focus on preventing duplicates for now.
+    const values = [];
     
+    if (goalInput === "") {
+        alert("Please enter a valid goal");
+        return;
+    }
+
+    if (values.includes(goalInput)) {
+        alert("Goal already exists!");
+        return;
+    }
+    
+    values.push(goalInput);
+
     const newGoal = document.createElement('li');
     newGoal.textContent = goalInput;
     goalList.appendChild(newGoal);
+
+    // Clear the input field after adding a new goal
+    document.querySelector("goalInput").value = "";
 };
 
 // Add event listener to the goal submit button
